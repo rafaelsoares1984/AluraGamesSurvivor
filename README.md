@@ -1,1 +1,1 @@
-# AlugaGamesSurvivor
+# AluraGamesSurvivor
