@@ -6,7 +6,7 @@ public class ControllerArm : MonoBehaviour
 {
     public GameObject Shot;
     public GameObject CanoArma;
-    públic AudioClip SongShot;
+    public AudioClip SongShot;
     // Start is called before the first frame update
     void Start()
     {
