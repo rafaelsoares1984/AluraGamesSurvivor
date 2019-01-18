@@ -47,10 +47,5 @@ public class ControllerEnemy : MonoBehaviour {
 			controllerPlayer.TextGameOver.SetActive(false);
 		}
 	}
-	void AttackPlayer()
-	{
-		Time.timeScale = 0;
-		controllerPlayer.TextGameOver.SetActive(true);
-		controllerPlayer.life = false;
-	}
+
 }
