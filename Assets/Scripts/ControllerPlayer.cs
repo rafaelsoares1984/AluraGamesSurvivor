@@ -70,7 +70,7 @@ public class ControllerPlayer : MonoBehaviour {
 		}
 	}
 	
-	voide takeDamage(int damage)
+	voide TakeDamage(int damage)
 	{
 		lifePlayer -=damage; 
 	}
