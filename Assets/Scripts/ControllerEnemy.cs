@@ -47,5 +47,13 @@ public class ControllerEnemy : MonoBehaviour {
 			controllerPlayer.TextGameOver.SetActive(false);
 		}
 	}
-
+	void AttackPlayer()
+	{
+		//Time.timeScale = 0;
+		//controllerPlayer.TextGameOver.SetActive(true);
+		//controllerPlayer.life = false;
+		int damage = Random.Range(20, 30);
+    		controllerPlayer.GetComponent<ControlaJogador>().TakeDamage(damage);
+		
+	}
 }
