@@ -70,9 +70,9 @@ public class ControllerPlayer : MonoBehaviour {
 		}
 	}
 	
-	voide takeDamage()
+	voide takeDamage(int damage)
 	{
-		lifePlayer -=30; 
+		lifePlayer -=damage; 
 	}
 	
 	void AttackPlayer()
