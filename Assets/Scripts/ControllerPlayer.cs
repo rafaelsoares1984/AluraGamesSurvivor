@@ -78,7 +78,7 @@ public class ControllerPlayer : MonoBehaviour {
 		if (lifePlayer <=0)
 		{
 			Time.timeScale = 0;
-			TextoGameOver.SetActive(true);
+			TextGameOver.SetActive(true);
 		}
 		
 	}
