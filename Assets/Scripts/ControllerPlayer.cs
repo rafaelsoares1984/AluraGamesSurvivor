@@ -14,7 +14,7 @@ public class ControllerPlayer : MonoBehaviour {
 	private Vector3 positionTarget;
 	public LayerMask FloorMask;
 	public GameObject TextGameOver;
-	public bool life = true;
+	public bool isLife = true;
 	private Rigidbody rigidbodyPlayer;
 	private Animator animatorPlayer;
 	public int lifePlayer = 100;
@@ -46,11 +46,12 @@ public class ControllerPlayer : MonoBehaviour {
 			animatorPlayer.SetBool("isIdle",true);
 		}
 
-		if (life.Equals(false)){
+		if (isLife.Equals(false)){
 			if (Input.GetButtonDown("Fire1")){
 				SceneManager.LoadScene("Level1");
 			}
 		}
+		
 	}
 
 	/// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
@@ -67,5 +68,17 @@ public class ControllerPlayer : MonoBehaviour {
 			newRotation = Quaternion.LookRotation(positionTarget);
 			rigidbodyPlayer.MoveRotation(newRotation);
 		}
-	} 
+	}
+	
+	voide takeDamage()
+	{
+		lifePlayer -=30; 
+	}
+	
+	void AttackPlayer()
+	{
+		Time.timeScale = 0;
+		controllerPlayer.TextGameOver.SetActive(true);
+		controllerPlayer.life = false;
+	}
 }
