@@ -13,16 +13,19 @@ public class ControllerEnemy : MonoBehaviour {
 	private ControllerPlayer controllerPlayer;
 	private Animator animatorEnemy;
 	private Rigidbody rigidbodyEnemy;
+	pŕivate MovementChar myMovement;
+	pŕivate AnimationChar myAnimationChar;
 	
 
 	// Use this for initialization
 	void Start () {
 		Player= GameObject.FindWithTag("Player");
-		randoZombie = Random.Range(1,28);
-		transform.GetChild(randoZombie).gameObject.SetActive(true);
+		switchZombies();
 		controllerPlayer = Player.GetComponent<ControllerPlayer>();
 		animatorEnemy = GetComponent<Animator>();
 		rigidbodyEnemy =  GetComponent<Rigidbody>();
+		myMovement = GetComponent<MovementChar>();
+		myAnimationChar = GetComponent<AnimationChar>();
 	}
 	
 	// Update is called once per frame
@@ -34,16 +37,13 @@ public class ControllerEnemy : MonoBehaviour {
 	void FixedUpdate()
 	{
 		direction = Player.transform.position - transform.position ;
-		rotation =Quaternion.LookRotation(direction);
-		rigidbodyEnemy.MoveRotation(rotation);
+		myMovement.Rotation(direction);
 		distance = Vector3.Distance(transform.position,Player.transform.position);
 		if (distance >2.5){
-			animatorEnemy.SetBool("isAttack",false);
-			rigidbodyEnemy.MovePosition(
-				rigidbodyEnemy.position + 
-				(direction.normalized * Velocity * Time.deltaTime)) ;
+			myAnimationChar.Attack(false);
+			myMovement.Movement(direction,Velocity);
 		}else{
-			animatorEnemy.SetBool("isAttack",true);
+			myAnimationChar.Attack(true);
 			controllerPlayer.TextGameOver.SetActive(false);
 		}
 	}
@@ -55,5 +55,10 @@ public class ControllerEnemy : MonoBehaviour {
 		int damage = Random.Range(20, 30);
     		controllerPlayer.GetComponent<ControlaJogador>().TakeDamage(damage);
 		
+	}
+	void switchZombies()
+	{
+		randoZombie = Random.Range(1,28);
+		transform.GetChild(randoZombie).gameObject.SetActive(true);
 	}
 }
