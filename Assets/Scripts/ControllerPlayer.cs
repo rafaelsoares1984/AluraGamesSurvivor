@@ -76,6 +76,7 @@ public class ControllerPlayer : MonoBehaviour {
 	{
 		lifePlayer -=damage;
 		scriptControllerInterface.UpdateSliderLifePlayer();
+		ControllerAudio.instace.PlayerOneShot(SongDamage);
 		if (lifePlayer <=0)
 		{
 			Time.timeScale = 0;
