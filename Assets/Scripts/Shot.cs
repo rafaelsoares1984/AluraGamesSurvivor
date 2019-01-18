@@ -6,6 +6,7 @@ public class Shot : MonoBehaviour
 {
     public float Velocity = 20;
     private Rigidbody rigidbodyShot;
+    public AudioClip SongDie;
 
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -25,7 +26,8 @@ public class Shot : MonoBehaviour
     void OnTriggerEnter(Collider objectColision)
     {
         if (objectColision.tag.Equals("Inimigo")){
-            Destroy(objectColision.gameObject);    
+            Destroy(objectColision.gameObject);   
+            ControllerAudio.instace.PlayOnShot(SongDie);
         }
         Destroy(gameObject);
     }
