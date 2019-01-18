@@ -18,7 +18,8 @@ public class ControllerPlayer : MonoBehaviour {
 	private Rigidbody rigidbodyPlayer;
 	private Animator animatorPlayer;
 	public int lifePlayer = 100;
-
+	public ControllerInterface scriptControllerInterface;
+	
 	/// Start is called on the frame when a script is enabled just before
 	/// any of the Update methods is called the first time.
 
@@ -72,7 +73,14 @@ public class ControllerPlayer : MonoBehaviour {
 	
 	voide TakeDamage(int damage)
 	{
-		lifePlayer -=damage; 
+		lifePlayer -=damage;
+		scriptControllerInterface.UpdateSliderLifePlayer();
+		if (lifePlayer <=0)
+		{
+			Time.timeScale = 0;
+			TextoGameOver.SetActive(true);
+		}
+		
 	}
 	
 	void AttackPlayer()
