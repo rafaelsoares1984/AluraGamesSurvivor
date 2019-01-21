@@ -37,7 +37,8 @@ public class ControllerPlayer : MonoBehaviour {
 		direction = new Vector3(axisX,0,axisZ);
 		
 		animator.Attack(direction);
-
+		animator.MoveAnimator(direction);
+		
 		if (isLife.Equals(false)){
 			if (Input.GetButtonDown("Fire1")){
 				SceneManager.LoadScene("Level1");
