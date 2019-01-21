@@ -17,6 +17,9 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamege {
 	private StatusChar status;
 	private AudioClip ControllerAudio;
 	private Vector3 positionRandom;
+	private float countRandon;
+	private float timeNextPosition = 4;
+	
 	
 	// Use this for initialization
 	void Start () {
@@ -51,9 +54,17 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamege {
 		}
 	}
 	void Patrol(){
-		positionRandom = RandonPosition();
-		direction = positionRandom - transform.position;
-		myMovement.Movement(direction,status.velocity);
+		countRandon -= Time.deltaTima;
+		if(countRandon <=0){
+			positionRandom = RandonPosition();
+			countRandon = timeNextPosition;
+		}
+		bool isPositionRandon = Vector3.Distance(transform.position,positionRandom) <= 0.05;
+		if (!isPositionRandon){
+			direction = positionRandom - transform.position;
+			myMovement.Movement(direction,status.velocity);
+		}
+
 	}
 	
 	Vector3 RandonPosition(){
