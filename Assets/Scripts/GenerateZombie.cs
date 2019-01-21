@@ -8,6 +8,9 @@ public class GenerateZombie : MonoBehaviour{
     private  float countTime = 0;
     public float timeSpawnZombie = 1;
     public LayerMask zumbiLayer;
+    private float distanceGenerator= 3;
+    private float distanceGeneratorPlayer= 20;
+	
 
     // Start is called before the first frame update
     void Start(){
@@ -16,6 +19,7 @@ public class GenerateZombie : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
+	    if (Vector3.transform.position distanceGeneratorPlayer)
         countTime += Time.deltaTime;
         if (countcTime >= timeSpawnZombie){
             StartCoroutine(GenerateZombie());
@@ -33,12 +37,17 @@ public class GenerateZombie : MonoBehaviour{
             yield return null;
         }
     }
-      
-	Vector3 RandonPosition(){
-		Vector3 position = Randon.insideUnitShpere * 3;
-		position += transform.position;
-		position.y = transform.position.y;
-		return position;
-	}
+    
+    void OnDrawGizmos(){
+	    Gizmos.color = Color.yellow;
+	    Gizmos.DrawWireShpere(transform.position,distanceGenerator);
+    }
+	
+    Vector3 RandonPosition(){
+	Vector3 position = Randon.insideUnitShpere * distanceGenerator;
+	position += transform.position;
+	position.y = transform.position.y;
+	return position;
+   }
     
 }
