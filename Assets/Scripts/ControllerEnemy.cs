@@ -16,6 +16,7 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamege {
 	private AnimationChar myAnimationChar;
 	private StatusChar status;
 	private AudioClip ControllerAudio;
+	private Vector3 positionRandom;
 	
 	// Use this for initialization
 	void Start () {
@@ -39,13 +40,27 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamege {
 		direction = player.transform.position - transform.position ;
 		myMovement.RotationChar(direction);
 		distance = Vector3.Distance(transform.position,player.transform.position);
-		if (distance >2.5){
+		if (distance >15){
+			Patrol();
+		}else if (distance >2.5){
 			myAnimationChar.Attack(false);
 			myMovement.Movement(direction,status.velocity);
 		}else{
 			myAnimationChar.Attack(true);
 			controllerPlayer.textGameOver.SetActive(false);
 		}
+	}
+	void Patrol(){
+		positionRandom = RandonPosition();
+		direction = positionRandom - transform.position;
+		myMovement.Movement(direction,status.velocity);
+	}
+	
+	Vector3 RandonPosition(){
+		Vector3 position = Randon.insideUnitShpere * 10;
+		position += transform.position;
+		position.y = transform.position.y;
+		return position;
 	}
 	
 	void AttackPlayer(){
