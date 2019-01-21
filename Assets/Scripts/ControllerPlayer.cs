@@ -20,6 +20,7 @@ public class ControllerPlayer : MonoBehaviour {
 	public int lifePlayer = 100;
 	public ControllerInterface scriptControllerInterface;
 	public AudioClip songDamage;
+	public StatusChar status;
 	
 	/// Start is called on the frame when a script is enabled just before
 	/// any of the Update methods is called the first time.
@@ -27,6 +28,7 @@ public class ControllerPlayer : MonoBehaviour {
 		Time.timeScale = 1;
 		rigidbodyPlayer = GetComponent<Rigidbody>();
 		animatorPlayer = GetComponent<Animator>();
+		status = GetComponent<StatusChar>();
 	}
 
 	// Update is called once per frame
@@ -68,10 +70,10 @@ public class ControllerPlayer : MonoBehaviour {
 	}
 	
 	public void TakeDamage(int damage){
-		lifePlayer -=damage;
+		status.life -=damage;
 		scriptControllerInterface.UpdateSliderLifePlayer();
 		ControllerAudio.instance.PlayOneShot(songDamage);
-		if (lifePlayer <=0){
+		if (status.life <=0){
 			Time.timeScale = 0;
 			textGameOver.SetActive(true);
 		}
