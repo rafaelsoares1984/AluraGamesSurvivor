@@ -23,8 +23,7 @@ public class Shot : MonoBehaviour{
     // OnTriggerEnter is called when the Collider other enters the trigger.
     void OnTriggerEnter(Collider objectColision){
         if (objectColision.tag.Equals("Inimigo")){
-            Destroy(objectColision.gameObject);   
-            ControllerAudio.instance.PlayOneShot(songDie);
+            objectColision.GetComponent<ControllerEnemy>().TakeDamage(100); 
         }
         Destroy(gameObject);
     }
