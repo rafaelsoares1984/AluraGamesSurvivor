@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ControllerPlayer : MonoBehaviour,ITakeDamage {
+public class ControllerPlayer : MonoBehaviour, ITakeDamage {
 
 	// Use this for initialization
 	private Vector3 direction;
