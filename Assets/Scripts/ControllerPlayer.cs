@@ -17,6 +17,7 @@ public class ControllerPlayer : MonoBehaviour {
 	public AudioClip songDamage;
 	public StatusChar status;
 	private MovementPlayer movement;
+	private AnimationChar animator;
 	
 	/// Start is called on the frame when a script is enabled just before
 	/// any of the Update methods is called the first time.
@@ -26,6 +27,7 @@ public class ControllerPlayer : MonoBehaviour {
 		animatorPlayer = GetComponent<Animator>();
 		status = GetComponent<StatusChar>();
 		movement = GetComponent<MovementPlayer>();
+		animator = GetComponent<AnimationChar>();
 	}
 
 	// Update is called once per frame
@@ -33,15 +35,8 @@ public class ControllerPlayer : MonoBehaviour {
 		float  axisX = Input.GetAxis("Horizontal");
 		float  axisZ = Input.GetAxis("Vertical");
 		direction = new Vector3(axisX,0,axisZ);
-
-		//transform.Translate(direction * velocity * Time.deltaTime );
-		if (direction != Vector3.zero){
-			animatorPlayer.SetBool("isWalking",true);
-			animatorPlayer.SetBool("isIdle",false);
-		}else{
-			animatorPlayer.SetBool("isWalking",false);
-			animatorPlayer.SetBool("isIdle",true);
-		}
+		
+		animator.Attack(direction);
 
 		if (isLife.Equals(false)){
 			if (Input.GetButtonDown("Fire1")){
@@ -53,9 +48,7 @@ public class ControllerPlayer : MonoBehaviour {
 
 	/// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
 	void FixedUpdate(){
-		rigidbodyPlayer.MovePosition(
-			rigidbodyPlayer.position+
-			(direction * velocity * Time.deltaTime));
+		movement.Movement(direction,status.velocity)
 		movement.RotationPlayer(floorMask);
 
 	}
