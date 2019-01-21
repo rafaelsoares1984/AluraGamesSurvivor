@@ -9,22 +9,27 @@ public class GenerateZombie : MonoBehaviour{
     public float timeSpawnZombie = 1;
     public LayerMask zumbiLayer;
     private float distanceGenerator= 3;
+    private GameObject player;
     private float distanceGeneratorPlayer= 20;
+    private Tags tag;
 	
 
     // Start is called before the first frame update
     void Start(){
-        
+          player = GameObject.FindWithTag(tag.player);
+
     }
 
     // Update is called once per frame
     void Update(){
-	    if (Vector3.transform.position distanceGeneratorPlayer)
-        countTime += Time.deltaTime;
-        if (countcTime >= timeSpawnZombie){
-            StartCoroutine(GenerateZombie());
-            countTime = 0;        
-        }
+	if (Vector3.Distance(transform.position,player.transform.position)
+	    >distanceGeneratorPlayer){
+		countTime += Time.deltaTime;
+		if (countcTime >= timeSpawnZombie){
+		    StartCoroutine(GenerateZombie());
+		    countTime = 0;        
+		}
+	}
     }
     
     IEnumerator RandomizePosition(){
