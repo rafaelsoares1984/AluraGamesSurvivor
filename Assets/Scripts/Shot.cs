@@ -7,6 +7,7 @@ public class Shot : MonoBehaviour{
     public float velocity = 20;
     private Rigidbody rigidbodyShot;
     public AudioClip songDie;
+    private int damageShot = 100;
 
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -23,7 +24,7 @@ public class Shot : MonoBehaviour{
     // OnTriggerEnter is called when the Collider other enters the trigger.
     void OnTriggerEnter(Collider objectColision){
         if (objectColision.tag.Equals("Inimigo")){
-            objectColision.GetComponent<ControllerEnemy>().TakeDamage(100); 
+            objectColision.GetComponent<ControllerEnemy>().TakeDamage(damageShot); 
         }
         Destroy(gameObject);
     }
