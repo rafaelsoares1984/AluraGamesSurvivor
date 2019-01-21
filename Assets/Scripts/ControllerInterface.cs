@@ -11,7 +11,7 @@ public class ControllerInterface : MonoBehaviour{
 
     void Start(){
         scriptControllerPlayer = GameObject.FindWithTag("Player").GetComponent<ControllerPlayer>();
-        sliderLifePlayer.maxValue = scriptControllerPlayer.lifePlayer;
+        sliderLifePlayer.maxValue = scriptControllerPlayer.status.life;
         UpdateSliderLifePlayer();
     }
 
@@ -21,7 +21,7 @@ public class ControllerInterface : MonoBehaviour{
     }
 
     public void UpdateSliderLifePlayer (){
-        sliderLifePlayer.value = scriptControllerPlayer.lifePlayer;
+        sliderLifePlayer.value = scriptControllerPlayer.status.life;
     }
 
 }
