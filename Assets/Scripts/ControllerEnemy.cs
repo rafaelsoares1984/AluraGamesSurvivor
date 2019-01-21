@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerEnemy : MonoBehaviour {
+public class ControllerEnemy : MonoBehaviour, ITakeDamege {
 
 	public GameObject player;
 	private Vector3 direction;
@@ -15,6 +15,7 @@ public class ControllerEnemy : MonoBehaviour {
 	private MovementChar myMovement;
 	private AnimationChar myAnimationChar;
 	private StatusChar status;
+	private AudioClip ControllerAudio;
 	
 	// Use this for initialization
 	void Start () {
@@ -56,6 +57,18 @@ public class ControllerEnemy : MonoBehaviour {
 		
 	}
 
+	public void TakeDamage(int damage){
+		status.life -=damage;
+		if (status.life <=0){
+			Die();
+		}
+	}
+	
+	public void Die(){
+	    Destroy(gameObject);   
+            ControllerAudio.instance.PlayOneShot(songDie);
+	}
+	
 	void SwitchZombies(){
 		randoZombie = Random.Range(1,28);
 		transform.GetChild(randoZombie).gameObject.SetActive(true);
