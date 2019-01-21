@@ -11,7 +11,6 @@ public class MovementCha : MonoBehaviour {
   void Awake(){
     myRigidbody = GetComponent<Rigidbody>();
   }
-  		
   
   public void Movement(Vector3 direction , float velocity)
   {
