@@ -5,10 +5,9 @@ using UnityEngine;
 public class ControllerAudio : MonoBehaviour {
   
   private AudioSource myAudioSource;
-  public statict AudioSource instace;
+  public static AudioSource instance;
   
-  voi Awake()
-  {
+  void Awake(){
     myAudioSource = GetComponent<AudioSource>();
     instance = myAudioSource;
   }

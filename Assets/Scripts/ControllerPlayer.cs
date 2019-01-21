@@ -6,26 +6,24 @@ using UnityEngine.SceneManagement;
 public class ControllerPlayer : MonoBehaviour {
 
 	// Use this for initialization
-	public float Velocity = 10;
+	public float velocity = 10;
 	private Vector3 direction;
 	private RaycastHit impact;
 	private Quaternion newRotation;
 	private Ray raio;
 	private Vector3 positionTarget;
-	public LayerMask FloorMask;
-	public GameObject TextGameOver;
+	public LayerMask floorMask;
+	public GameObject textGameOver;
 	public bool isLife = true;
 	private Rigidbody rigidbodyPlayer;
 	private Animator animatorPlayer;
 	public int lifePlayer = 100;
 	public ControllerInterface scriptControllerInterface;
-	public AudioClip SongDamage;
+	public AudioClip songDamage;
 	
 	/// Start is called on the frame when a script is enabled just before
 	/// any of the Update methods is called the first time.
-
-	void Start()
-	{
+	void Start(){
 		Time.timeScale = 1;
 		rigidbodyPlayer = GetComponent<Rigidbody>();
 		animatorPlayer = GetComponent<Animator>();
@@ -33,17 +31,15 @@ public class ControllerPlayer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 		float  axisX = Input.GetAxis("Horizontal");
 		float  axisZ = Input.GetAxis("Vertical");
 		direction = new Vector3(axisX,0,axisZ);
 
 		//transform.Translate(direction * velocity * Time.deltaTime );
-
 		if (direction != Vector3.zero){
 			animatorPlayer.SetBool("isWalking",true);
 			animatorPlayer.SetBool("isIdle",false);
-		}	else{
+		}else{
 			animatorPlayer.SetBool("isWalking",false);
 			animatorPlayer.SetBool("isIdle",true);
 		}
@@ -57,14 +53,13 @@ public class ControllerPlayer : MonoBehaviour {
 	}
 
 	/// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
-	void FixedUpdate()
-	{
+	void FixedUpdate(){
 		rigidbodyPlayer.MovePosition(
 			rigidbodyPlayer.position+
-			(direction * Velocity * Time.deltaTime));
+			(direction * velocity * Time.deltaTime));
 		raio = Camera.main.ScreenPointToRay(Input.mousePosition);
 		//Debug.DrawRay(raio.origin,raio.direction,Color.red);
-		if (Physics.Raycast(raio,out impact,100,FloorMask)){
+		if (Physics.Raycast(raio,out impact,100,floorMask)){
 			positionTarget = impact.point - transform.position;
 			positionTarget.y = transform.position.y;
 			newRotation = Quaternion.LookRotation(positionTarget);
@@ -72,23 +67,19 @@ public class ControllerPlayer : MonoBehaviour {
 		}
 	}
 	
-	voide TakeDamage(int damage)
-	{
+	public void TakeDamage(int damage){
 		lifePlayer -=damage;
 		scriptControllerInterface.UpdateSliderLifePlayer();
-		ControllerAudio.instace.PlayerOneShot(SongDamage);
-		if (lifePlayer <=0)
-		{
+		ControllerAudio.instance.PlayOneShot(songDamage);
+		if (lifePlayer <=0){
 			Time.timeScale = 0;
-			TextGameOver.SetActive(true);
+			textGameOver.SetActive(true);
 		}
-		
 	}
 	
-	void AttackPlayer()
-	{
+	void AttackPlayer(){
 		Time.timeScale = 0;
-		controllerPlayer.TextGameOver.SetActive(true);
-		controllerPlayer.life = false;
+		textGameOver.SetActive(true);
+		isLife = false;
 	}
 }

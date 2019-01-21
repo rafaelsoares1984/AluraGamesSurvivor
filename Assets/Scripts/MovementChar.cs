@@ -1,28 +1,25 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementCha : MonoBehaviour {
+public class MovementChar : MonoBehaviour {
   
   private Rigidbody myRigidbody;
-  privater Quaternion rotation;
+  private Quaternion rotate;
   
   void Awake(){
     myRigidbody = GetComponent<Rigidbody>();
   }
-  		
   
-  public void Movement(Vector3 direction , float velocity)
-  {
+  public void Movement(Vector3 direction , float velocity){
     myRigidbody.MovePosition(
-				myRigidbody.position + 
-				(direction.normalized * velocity * Time.deltaTime)) ;
+			myRigidbody.position + 
+			(direction.normalized * velocity * Time.deltaTime)) ;
   }
 	
-  public void Rotation(Vector3 direction ){
-	 rotation =Quaternion.LookRotation(direction);
-	 myRigidbody.MoveRotation(rotation); 
+  public void RotationChar(Vector3 direction ){
+	  rotate =Quaternion.LookRotation(direction);
+	  myRigidbody.MoveRotation(rotate); 
   }
 
 }

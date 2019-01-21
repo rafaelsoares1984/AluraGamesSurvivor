@@ -105,7 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d37761287f83647959eb885e10e08c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocity: 20
+  velocity: 20
+  songDie: {fileID: 0}
 --- !u!54 &5522451147147326527
 Rigidbody:
   m_ObjectHideFlags: 0

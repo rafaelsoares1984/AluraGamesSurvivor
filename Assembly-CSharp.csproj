@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{28BBA9C8-DEB4-3DCF-DCFA-4A7236070067}</ProjectGuid>
+    <ProjectGuid>{38B2B5EF-6ED8-25B1-D41A-29A83A652FA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,28 +53,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AnimationChar.cs" />
      <Compile Include="Assets\Scripts\ControllerArm.cs" />
+     <Compile Include="Assets\Scripts\ControllerAudio.cs" />
      <Compile Include="Assets\Scripts\ControllerCamera.cs" />
      <Compile Include="Assets\Scripts\ControllerEnemy.cs" />
+     <Compile Include="Assets\Scripts\ControllerInterface.cs" />
      <Compile Include="Assets\Scripts\ControllerPlayer.cs" />
      <Compile Include="Assets\Scripts\GenerateZombie.cs" />
+     <Compile Include="Assets\Scripts\MovementChar.cs" />
      <Compile Include="Assets\Scripts\Shot.cs" />
      <None Include="Assets\Modelos3D\Personagens\Animacoes\Animacoes.txt" />
      <None Include="Assets\Modelos3D\Personagens\Animacoes\Animacoes_Zumbi.txt" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>H:/apocalipse-zumbi-alura/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>H:/apocalipse-zumbi-alura/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>H:/apocalipse-zumbi-alura/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>H:/apocalipse-zumbi-alura/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>H:/apocalipse-zumbi-alura/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Unty/edtor/2018.3.0f2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -278,19 +282,19 @@
  <HintPath>C:/Unty/edtor/2018.3.0f2/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
- <HintPath>H:/apocalipse-zumbi-alura/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements.Editor">
- <HintPath>H:/apocalipse-zumbi-alura/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>H:/apocalipse-zumbi-alura/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>H:/apocalipse-zumbi-alura/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>H:/apocalipse-zumbi-alura/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>H:/Alura/AluraGamesSurvivor/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Unty/edtor/2018.3.0f2/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

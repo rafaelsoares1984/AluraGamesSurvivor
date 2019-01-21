@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ControllerCamera : MonoBehaviour {
 
-	public GameObject Player ;
+	public GameObject player ;
 	private Vector3 distance;
 
 	// Use this for initialization
-	void Start () {
-		distance = transform.position - Player.transform.position;
+	void Start (){
+		distance = transform.position - player.transform.position;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		transform.position = Player.transform.position + distance;
+	void Update (){
+		transform.position = player.transform.position + distance;
 	}
 }

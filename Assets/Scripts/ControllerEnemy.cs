@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class ControllerEnemy : MonoBehaviour {
 
-	public GameObject Player;
+	public GameObject player;
 	private Vector3 direction;
 	private float distance;
-	public float Velocity = 5;
+	public float velocity = 5;
 	private Quaternion rotation;
 	private int randoZombie;
 	private ControllerPlayer controllerPlayer;
 	private Animator animatorEnemy;
 	private Rigidbody rigidbodyEnemy;
-	pŕivate MovementChar myMovement;
-	pŕivate AnimationChar myAnimationChar;
+	private MovementChar myMovement;
+	private AnimationChar myAnimationChar;
 	
-
 	// Use this for initialization
 	void Start () {
-		Player= GameObject.FindWithTag("Player");
-		switchZombies();
-		controllerPlayer = Player.GetComponent<ControllerPlayer>();
+		player= GameObject.FindWithTag("Player");
+		SwitchZombies();
+		controllerPlayer = player.GetComponent<ControllerPlayer>();
 		animatorEnemy = GetComponent<Animator>();
 		rigidbodyEnemy =  GetComponent<Rigidbody>();
 		myMovement = GetComponent<MovementChar>();
@@ -34,30 +33,29 @@ public class ControllerEnemy : MonoBehaviour {
 	}
 	
 	// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
-	void FixedUpdate()
-	{
-		direction = Player.transform.position - transform.position ;
-		myMovement.Rotation(direction);
-		distance = Vector3.Distance(transform.position,Player.transform.position);
+	void FixedUpdate(){
+		direction = player.transform.position - transform.position ;
+		myMovement.RotationChar(direction);
+		distance = Vector3.Distance(transform.position,player.transform.position);
 		if (distance >2.5){
 			myAnimationChar.Attack(false);
-			myMovement.Movement(direction,Velocity);
+			myMovement.Movement(direction,velocity);
 		}else{
 			myAnimationChar.Attack(true);
-			controllerPlayer.TextGameOver.SetActive(false);
+			controllerPlayer.textGameOver.SetActive(false);
 		}
 	}
-	void AttackPlayer()
-	{
+	
+	void AttackPlayer(){
 		//Time.timeScale = 0;
 		//controllerPlayer.TextGameOver.SetActive(true);
 		//controllerPlayer.life = false;
 		int damage = Random.Range(20, 30);
-    		controllerPlayer.GetComponent<ControlaJogador>().TakeDamage(damage);
+    		controllerPlayer.GetComponent<ControllerPlayer>().TakeDamage(damage);
 		
 	}
-	void switchZombies()
-	{
+
+	void SwitchZombies(){
 		randoZombie = Random.Range(1,28);
 		transform.GetChild(randoZombie).gameObject.SetActive(true);
 	}
