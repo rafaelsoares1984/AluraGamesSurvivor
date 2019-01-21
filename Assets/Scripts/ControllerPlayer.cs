@@ -18,6 +18,7 @@ public class ControllerPlayer : MonoBehaviour, ITakeDamage {
 	public StatusChar status;
 	private MovementPlayer movement;
 	private AnimationChar animator;
+	private Tags tag;
 	
 	/// Start is called on the frame when a script is enabled just before
 	/// any of the Update methods is called the first time.
@@ -32,16 +33,16 @@ public class ControllerPlayer : MonoBehaviour, ITakeDamage {
 
 	// Update is called once per frame
 	void Update () {
-		float  axisX = Input.GetAxis("Horizontal");
-		float  axisZ = Input.GetAxis("Vertical");
+		float  axisX = Input.GetAxis(tag.directionHorizontal);
+		float  axisZ = Input.GetAxis(tag.directionVertical);
 		direction = new Vector3(axisX,0,axisZ);
 		
 		animator.Attack(direction);
 		animator.MoveAnimator(direction);
 		
 		if (isLife.Equals(false)){
-			if (Input.GetButtonDown("Fire1")){
-				SceneManager.LoadScene("Level1");
+			if (Input.GetButtonDown(tag.ButtonMouse)){
+				SceneManager.LoadScene(tag.ButtonMouse);
 			}
 		}
 		
