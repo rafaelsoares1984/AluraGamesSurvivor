@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ControllerPlayer : MonoBehaviour {
+public class ControllerPlayer : MonoBehaviour,ITakeDamage {
 
 	// Use this for initialization
 	private Vector3 direction;
@@ -59,9 +59,13 @@ public class ControllerPlayer : MonoBehaviour {
 		scriptControllerInterface.UpdateSliderLifePlayer();
 		ControllerAudio.instance.PlayOneShot(songDamage);
 		if (status.life <=0){
-			Time.timeScale = 0;
-			textGameOver.SetActive(true);
+			Die();
 		}
+	}
+	
+	public void Die(){
+		Time.timeScale = 0;
+		textGameOver.SetActive(true);
 	}
 	
 	void AttackPlayer(){
