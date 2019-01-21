@@ -16,6 +16,7 @@ public class ControllerPlayer : MonoBehaviour {
 	public ControllerInterface scriptControllerInterface;
 	public AudioClip songDamage;
 	public StatusChar status;
+	private MovementPlayer movement;
 	
 	/// Start is called on the frame when a script is enabled just before
 	/// any of the Update methods is called the first time.
@@ -24,6 +25,7 @@ public class ControllerPlayer : MonoBehaviour {
 		rigidbodyPlayer = GetComponent<Rigidbody>();
 		animatorPlayer = GetComponent<Animator>();
 		status = GetComponent<StatusChar>();
+		movement = GetComponent<MovementPlayer>();
 	}
 
 	// Update is called once per frame
@@ -54,14 +56,8 @@ public class ControllerPlayer : MonoBehaviour {
 		rigidbodyPlayer.MovePosition(
 			rigidbodyPlayer.position+
 			(direction * velocity * Time.deltaTime));
-		raio = Camera.main.ScreenPointToRay(Input.mousePosition);
-		//Debug.DrawRay(raio.origin,raio.direction,Color.red);
-		if (Physics.Raycast(raio,out impact,100,floorMask)){
-			positionTarget = impact.point - transform.position;
-			positionTarget.y = transform.position.y;
-			newRotation = Quaternion.LookRotation(positionTarget);
-			rigidbodyPlayer.MoveRotation(newRotation);
-		}
+		movement.RotationPlayer(floorMask);
+
 	}
 	
 	public void TakeDamage(int damage){
