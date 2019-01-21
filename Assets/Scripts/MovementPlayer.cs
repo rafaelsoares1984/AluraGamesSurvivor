@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementPlayer : MovimentChar {
 
-    Private Camera cam;
+    private Camera cam;
     
     void Start(){
   	    Cam = GetComponent<Camera>();
