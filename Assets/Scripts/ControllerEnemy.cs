@@ -7,7 +7,6 @@ public class ControllerEnemy : MonoBehaviour {
 	public GameObject player;
 	private Vector3 direction;
 	private float distance;
-	public float velocity = 5;
 	private Quaternion rotation;
 	private int randoZombie;
 	private ControllerPlayer controllerPlayer;
@@ -15,6 +14,7 @@ public class ControllerEnemy : MonoBehaviour {
 	private Rigidbody rigidbodyEnemy;
 	private MovementChar myMovement;
 	private AnimationChar myAnimationChar;
+	private StatusChar status;
 	
 	// Use this for initialization
 	void Start () {
@@ -25,6 +25,7 @@ public class ControllerEnemy : MonoBehaviour {
 		rigidbodyEnemy =  GetComponent<Rigidbody>();
 		myMovement = GetComponent<MovementChar>();
 		myAnimationChar = GetComponent<AnimationChar>();
+		status = GetComponent<StatusChar>();
 	}
 	
 	// Update is called once per frame
@@ -39,7 +40,7 @@ public class ControllerEnemy : MonoBehaviour {
 		distance = Vector3.Distance(transform.position,player.transform.position);
 		if (distance >2.5){
 			myAnimationChar.Attack(false);
-			myMovement.Movement(direction,velocity);
+			myMovement.Movement(direction,status.velocity);
 		}else{
 			myAnimationChar.Attack(true);
 			controllerPlayer.textGameOver.SetActive(false);
