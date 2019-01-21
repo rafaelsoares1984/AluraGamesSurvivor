@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementPlayer : MovimentChar {
+
+    Private Camera cam;
+    
+    void Start(){
+  	    Cam = GetComponent<Camera>();
+    }
     
     public void RotationPlayer(LayerMask floorMask)
     {
-      raio = Camera.main.ScreenPointToRay(Input.mousePosition);
+      raio = Cam.ScreenPointToRay(Input.mousePosition);
       //Debug.DrawRay(raio.origin,raio.direction,Color.red);
       if (Physics.Raycast(raio,out impact,100,floorMask)){
         positionTarget = impact.point - transform.position;
