@@ -42,6 +42,7 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamege {
 	void FixedUpdate(){
 		direction = player.transform.position - transform.position ;
 		myMovement.RotationChar(direction);
+		myAnimationChar.Movement(direction.magnitude)
 		distance = Vector3.Distance(transform.position,player.transform.position);
 		if (distance >15){
 			Patrol();
@@ -75,9 +76,6 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamege {
 	}
 	
 	void AttackPlayer(){
-		//Time.timeScale = 0;
-		//controllerPlayer.TextGameOver.SetActive(true);
-		//controllerPlayer.life = false;
 		int damage = Random.Range(20, 30);
     		controllerPlayer.GetComponent<ControllerPlayer>().TakeDamage(damage);
 		
