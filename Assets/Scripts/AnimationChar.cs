@@ -23,4 +23,9 @@ public class AnimationChar : MonoBehaviour {
     myAnimator.SetBool("isAttack",isAttack);
   }
 
+  public void MoveAnimator(Vector3 directon){
+	myAnimator.setFloat("Movement",directon.magnitude);
+	  
+  }
+
 }
