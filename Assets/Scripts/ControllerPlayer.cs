@@ -6,18 +6,13 @@ using UnityEngine.SceneManagement;
 public class ControllerPlayer : MonoBehaviour {
 
 	// Use this for initialization
-	public float velocity = 10;
 	private Vector3 direction;
-	private RaycastHit impact;
 	private Quaternion newRotation;
-	private Ray raio;
-	private Vector3 positionTarget;
 	public LayerMask floorMask;
 	public GameObject textGameOver;
 	public bool isLife = true;
 	private Rigidbody rigidbodyPlayer;
 	private Animator animatorPlayer;
-	public int lifePlayer = 100;
 	public ControllerInterface scriptControllerInterface;
 	public AudioClip songDamage;
 	public StatusChar status;
