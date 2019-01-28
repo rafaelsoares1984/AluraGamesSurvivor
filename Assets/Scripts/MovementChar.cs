@@ -22,4 +22,11 @@ public class MovementChar : MonoBehaviour {
 	  myRigidbody.MoveRotation(rotate); 
   }
 
+  public void Die(){
+    myRigidbody.constraints = RigidbodyConstraints.None;
+    myRigidbody.velocity = Vector3.zero;
+    GetComponent<Collider>().enabled = false;
+    
+  }
+
 }

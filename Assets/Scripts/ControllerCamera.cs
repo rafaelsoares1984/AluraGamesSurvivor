@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ControllerCamera : MonoBehaviour {
 
+	[Header("Player Reference")]
 	public GameObject player ;
 	private Vector3 distance;
 

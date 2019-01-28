@@ -24,8 +24,10 @@ public class AnimationChar : MonoBehaviour {
   }
 
   public void MoveAnimator(Vector3 directon){
-	myAnimator.setFloat("Movement",directon.magnitude);
+	  myAnimator.SetFloat("Movement",directon.magnitude);
 	  
   }
-
+  public void Die(){
+    myAnimator.SetTrigger("isDie");
+  }
 }

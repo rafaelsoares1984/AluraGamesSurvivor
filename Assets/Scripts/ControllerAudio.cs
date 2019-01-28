@@ -5,6 +5,7 @@ using UnityEngine;
 public class ControllerAudio : MonoBehaviour {
   
   private AudioSource myAudioSource;
+  [Header("Instance of ControllerAudio")]
   public static AudioSource instance;
   
   void Awake(){

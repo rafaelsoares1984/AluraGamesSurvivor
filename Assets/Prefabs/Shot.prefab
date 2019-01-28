@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 20
-  songDie: {fileID: 0}
+  songDie: {fileID: 8300000, guid: 957dcf71a7b6b0d4babab049feee459b, type: 3}
 --- !u!54 &5522451147147326527
 Rigidbody:
   m_ObjectHideFlags: 0

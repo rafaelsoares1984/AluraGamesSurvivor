@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shot : MonoBehaviour{
+
+public class ShootChar : MonoBehaviour{
     
     public float velocity = 20;
     private Rigidbody rigidbodyShot;
@@ -23,9 +24,17 @@ public class Shot : MonoBehaviour{
 
     // OnTriggerEnter is called when the Collider other enters the trigger.
     void OnTriggerEnter(Collider objectColision){
-        if (objectColision.tag.Equals("Inimigo")){
-            objectColision.GetComponent<ControllerEnemy>().TakeDamage(damageShot); 
+        
+        switch (objectColision.tag)
+        {
+            case Tags.enemy:
+                objectColision.GetComponent<ControllerEnemy>().TakeDamage(damageShot); 
+                break;
+            case Tags.boss:
+                objectColision.GetComponent<ControllerBoss>().TakeDamage(damageShot);
+                break;
         }
+
         Destroy(gameObject);
     }
 }

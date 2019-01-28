@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ControllerPlayer : MonoBehaviour, ITakeDamage {
+public class ControllerPlayer : MonoBehaviour, ITakeDamage, IHealer {
 
 	// Use this for initialization
 	private Vector3 direction;
@@ -18,7 +17,6 @@ public class ControllerPlayer : MonoBehaviour, ITakeDamage {
 	public StatusChar status;
 	private MovementPlayer movement;
 	private AnimationChar animator;
-	private Tags tag;
 	
 	/// Start is called on the frame when a script is enabled just before
 	/// any of the Update methods is called the first time.
@@ -28,29 +26,24 @@ public class ControllerPlayer : MonoBehaviour, ITakeDamage {
 		animatorPlayer = GetComponent<Animator>();
 		status = GetComponent<StatusChar>();
 		movement = GetComponent<MovementPlayer>();
-		animator = GetComponent<AnimationChar>();
+		animator =   GetComponent<AnimationChar>();
+		status = GetComponent<StatusChar>();
+
 	}
 
 	// Update is called once per frame
 	void Update () {
-		float  axisX = Input.GetAxis(tag.directionHorizontal);
-		float  axisZ = Input.GetAxis(tag.directionVertical);
-		direction = new Vector3(axisX,0,axisZ);
+		float  axisX = Input.GetAxis(Tags.directionHorizontal);
+		float  axisZ = Input.GetAxis(Tags.directionVertical);
+		direction = new Vector3(axisX, 0, axisZ);
 		
-		animator.Attack(direction);
 		animator.MoveAnimator(direction);
-		
-		if (isLife.Equals(false)){
-			if (Input.GetButtonDown(tag.ButtonMouse)){
-				SceneManager.LoadScene(tag.ButtonMouse);
-			}
-		}
 		
 	}
 
 	/// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
 	void FixedUpdate(){
-		movement.Movement(direction,status.velocity)
+		movement.Movement(direction,status.velocity);
 		movement.RotationPlayer(floorMask);
 
 	}
@@ -65,13 +58,15 @@ public class ControllerPlayer : MonoBehaviour, ITakeDamage {
 	}
 	
 	public void Die(){
-		Time.timeScale = 0;
-		textGameOver.SetActive(true);
+		scriptControllerInterface.GameOver();
 	}
 	
-	void AttackPlayer(){
-		Time.timeScale = 0;
-		textGameOver.SetActive(true);
-		isLife = false;
+	public void HealLife(int qtdLife){
+		status.life +=qtdLife; 
+		if (status.life > status.initialLife){
+			status.life = status.initialLife;
+		}
+		
+		scriptControllerInterface.UpdateSliderLifePlayer();
 	}
 }
