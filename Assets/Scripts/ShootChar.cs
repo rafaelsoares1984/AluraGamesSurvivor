@@ -8,7 +8,7 @@ public class ShootChar : MonoBehaviour{
     public float velocity = 20;
     private Rigidbody rigidbodyShot;
     public AudioClip songDie;
-    private int damageShot = 100;
+    private int damageShot = 1;
 
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.

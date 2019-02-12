@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class ControllerBoss : MonoBehaviour, ITakeDamage
 {
@@ -12,6 +13,9 @@ public class ControllerBoss : MonoBehaviour, ITakeDamage
     private AnimationChar animatorBoss;
     private MovementChar movementBoss;
     public GameObject  kitMedicine;
+    public Slider lifeBoss;
+    public Image imageSlider;
+    public Color colorLifeMax,colorLifeMin;
     void Start()
     {
        player = GameObject.FindWithTag(Tags.player).transform;
@@ -20,6 +24,8 @@ public class ControllerBoss : MonoBehaviour, ITakeDamage
        agent.speed = stateBoss.velocity;
        animatorBoss = GetComponent<AnimationChar>();
        movementBoss = GetComponent<MovementChar>();
+       lifeBoss.maxValue = stateBoss.initialLife;
+       UpdateInterface();
 
     }
 
@@ -48,9 +54,11 @@ public class ControllerBoss : MonoBehaviour, ITakeDamage
 
     public void TakeDamage(int damage){
         stateBoss.life -= damage;
+        UpdateInterface();
         if (stateBoss.life <= 0){
             Die();
         }
+        
     }
 
     public void Die(){
@@ -61,5 +69,12 @@ public class ControllerBoss : MonoBehaviour, ITakeDamage
         agent.enabled = false;
         Instantiate(kitMedicine,transform.position,Quaternion.identity);
 	  //  ControllerAudio.instance.PlayOneShot(songDie);
+    }
+
+    void UpdateInterface(){
+        lifeBoss.value = stateBoss.life;
+        float percentLife =  (float) stateBoss.life / stateBoss.initialLife;
+        Color corLife = Color.Lerp(colorLifeMin,colorLifeMax,percentLife);
+        imageSlider.color = corLife;
     }
 }

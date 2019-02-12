@@ -16,6 +16,8 @@ public class ControllerInterface : MonoBehaviour{
     public float timeToPlayMaxTime = 0;
     private int qtdZombieDie;
     public Text textQtdZombieDie;
+    public Text textBossShow;
+    
 
     void Start(){
         scriptControllerPlayer = GameObject.FindWithTag(Tags.player).GetComponent<ControllerPlayer>();
@@ -62,4 +64,25 @@ public class ControllerInterface : MonoBehaviour{
        // PlayerPrefs.SetFloat("timeToPlayMaxTime",timeToPlayMaxTime);
     }
 
+    public void ShowTextBoss(){
+        StartCoroutine(HideText(2,textBossShow)); 
+    }
+
+    IEnumerator HideText(float timeHide,Text textHide){
+        textHide.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        Color colorText = textHide.color;
+        colorText.a = 1;
+        textHide.color = colorText;
+        float cont = 0;
+        while (textBossShow.color.a >0){
+            cont += Time.deltaTime / timeHide;
+            colorText.a = Mathf.Lerp(1,0,cont);
+            textHide.color = colorText;
+            if (colorText.a <= 0){
+                textHide.gameObject.SetActive(false);
+            }
+            yield return  null;
+        }
+    }
 }
