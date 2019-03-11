@@ -24,14 +24,21 @@ public class ShootChar : MonoBehaviour{
 
     // OnTriggerEnter is called when the Collider other enters the trigger.
     void OnTriggerEnter(Collider objectColision){
-        
+        Debug.Log(objectColision.tag.ToString());
+        Quaternion rotation = Quaternion.LookRotation(-transform.forward);
         switch (objectColision.tag)
         {
+             
             case Tags.enemy:
-                objectColision.GetComponent<ControllerEnemy>().TakeDamage(damageShot); 
+                ControllerEnemy enemy = objectColision.GetComponent<ControllerEnemy>();
+                enemy.TakeDamage(damageShot); 
+                enemy.ParticleBlood(transform.position,rotation);
                 break;
             case Tags.boss:
-                objectColision.GetComponent<ControllerBoss>().TakeDamage(damageShot);
+                ControllerBoss boss = objectColision.GetComponent<ControllerBoss>();
+                boss.TakeDamage(damageShot); 
+                boss.ParticleBlood(transform.position,rotation);
+
                 break;
         }
 

@@ -25,7 +25,7 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamage {
 	private ControllerInterface scriptInterface;
 	[HideInInspector]
 	public GenerateZombie myGenerator;
-
+	public GameObject particleBloodZombie;
 	
 	// Use this for initialization
 	void Start () {
@@ -65,6 +65,7 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamage {
 		}
 	}
 	void Patrol(){
+		myAnimationChar.Attack(false);
 		countRandon -= Time.deltaTime;
 		if(countRandon <=0){
 			positionRandom = RandonPosition();
@@ -87,7 +88,7 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamage {
 	
 	void AttackPlayer(){
 		int damage = Random.Range(20, 30);
-    		controllerPlayer.GetComponent<ControllerPlayer>().TakeDamage(damage);
+    	controllerPlayer.GetComponent<ControllerPlayer>().TakeDamage(damage);
 		
 	}
 
@@ -98,6 +99,11 @@ public class ControllerEnemy : MonoBehaviour, ITakeDamage {
 		}
 	}
 	
+	public void ParticleBlood(Vector3 position, Quaternion rotate){
+		Instantiate(particleBloodZombie,position,rotate);
+	}
+
+
 	public void Die(){
 		Destroy(gameObject,2);
 		myAnimationChar.Die();

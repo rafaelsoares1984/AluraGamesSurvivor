@@ -552,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063500868937916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.9, y: -0.75, z: -9.7}
+  m_LocalPosition: {x: -25.9, y: 0, z: -9.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388596583815700}
@@ -635,6 +635,8 @@ MonoBehaviour:
   kitMedicine: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a,
     type: 3}
   myGenerator: {fileID: 0}
+  particleBloodZombie: {fileID: 7479727813989866058, guid: b652ff4e9eaf4b849bf4ecf9ace35403,
+    type: 3}
 --- !u!54 &54974373959436548
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -687,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a411807ac31b948a5bf699c5bed69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
+  life: 3
   velocity: 5
   initialLife: 100
 --- !u!1 &1065480718027956

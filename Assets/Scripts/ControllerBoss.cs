@@ -16,6 +16,7 @@ public class ControllerBoss : MonoBehaviour, ITakeDamage
     public Slider lifeBoss;
     public Image imageSlider;
     public Color colorLifeMax,colorLifeMin;
+    public GameObject particleBloodBoss;
     void Start()
     {
        player = GameObject.FindWithTag(Tags.player).transform;
@@ -26,6 +27,7 @@ public class ControllerBoss : MonoBehaviour, ITakeDamage
        movementBoss = GetComponent<MovementChar>();
        lifeBoss.maxValue = stateBoss.initialLife;
        UpdateInterface();
+       
 
     }
 
@@ -60,7 +62,9 @@ public class ControllerBoss : MonoBehaviour, ITakeDamage
         }
         
     }
-
+	public void ParticleBlood(Vector3 position, Quaternion rotate){
+		Instantiate(particleBloodBoss,position,rotate);
+	}
     public void Die(){
         Destroy(gameObject,2);
 		animatorBoss.Die();

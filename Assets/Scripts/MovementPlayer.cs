@@ -6,7 +6,7 @@ public class MovementPlayer : MovementChar {
 
     private Camera cam;
     private Ray raio;
-    private RaycastHit impact;
+
     private Vector3 positionTarget;
     
     
@@ -19,7 +19,8 @@ public class MovementPlayer : MovementChar {
     {
       raio = cam.ScreenPointToRay(Input.mousePosition);
       Debug.DrawRay(raio.origin,raio.direction,Color.red);
-      if (Physics.Raycast(raio,out impact,100,floorMask)){
+      RaycastHit impact;
+      if (Physics.Raycast(raio,out impact,50,floorMask)){
         positionTarget = impact.point - transform.position;
         positionTarget.y = transform.position.y;
         RotationChar(positionTarget);

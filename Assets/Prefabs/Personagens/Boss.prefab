@@ -2135,7 +2135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4881752172876801181
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2337,7 +2337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -51}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4881752173533344265
@@ -3598,7 +3598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8940404762003281210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.896263, y: 0.84229165, z: -11.2358265}
+  m_LocalPosition: {x: -30.896263, y: 0, z: -11.2358265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6666349293819225846}
@@ -3760,7 +3760,9 @@ MonoBehaviour:
   lifeBoss: {fileID: 4881752173533344265}
   imageSlider: {fileID: 4881752173098419785}
   colorLifeMax: {r: 0.45490196, g: 0.93333334, b: 0.1405952, a: 1}
-  colorLifeMin: {r: 1, g: 0.14117648, b: 0, a: 0.003921569}
+  colorLifeMin: {r: 1, g: 0.14117648, b: 0, a: 1}
+  particleBloodBoss: {fileID: 7479727813989866058, guid: b652ff4e9eaf4b849bf4ecf9ace35403,
+    type: 3}
 --- !u!1 &9119310479027782530
 GameObject:
   m_ObjectHideFlags: 0

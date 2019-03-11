@@ -20,10 +20,11 @@ public class kitMedicine : MonoBehaviour
 
     void OnTriggerEnter(Collider objectCollision)
     {
-
+        Debug.Log("entrei"+objectCollision);
         if(objectCollision.tag.Equals(Tags.player)){
+            Debug.Log("curou");
             objectCollision.GetComponent<ControllerPlayer>().HealLife(qtdHeal);
-            Destroy(objectCollision);
+            Destroy(this.gameObject);
         }
         
     }

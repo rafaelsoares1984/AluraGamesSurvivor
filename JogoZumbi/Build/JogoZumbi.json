@@ -1,6 +1,6 @@
 {
-"companyName": "DefaultCompany",
-"productName": "apocalipse-zumbi-alura",
+"companyName": "Rafas Lab",
+"productName": "Apocalipse Zumbi",
 "dataUrl": "JogoZumbi.data.unityweb",
 "wasmCodeUrl": "JogoZumbi.wasm.code.unityweb",
 "wasmFrameworkUrl": "JogoZumbi.wasm.framework.unityweb",
